@@ -1,106 +1,94 @@
-var listDistanceMade = [84,28,14,23,101]
-var listDistanceAttempts = [148,74,39,83,279]
-
-var set1 = new Set();
+var setPlayerName = new Set();
 var jsonFile;
-var yearSelect;
+var playersYearSelect;
 var playersSelect;
 
-window.onload = function () {
+var ctx;
+var myChart;
 
+$(document).ready(function(){
+    myChart = new Chart(ctx, {
+        type: 'bar',
+        label: 'Shot Attempts',
+        data: {
+            labels: ['At Rim', '3 to <10 ft', '10 to <16 ft', '16ft to <3-pt', '3Pt'],
+            datasets: [
+                {
+                    label: 'Number of Shot Attempts',
+                    data: [1, 1, 1, 1, 1],
+                    backgroundColor: "blue",
+                    borderWidth: 1
+                }
+             ]
+
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+});
+
+
+window.onload = function () {
     playersSelect = document.getElementById("playersName");
-    yearSelect = document.getElementById("year");
+    playersYearSelect = document.getElementById("year");
+    ctx = document.getElementById('chart').getContext('2d');
 
     var playerNameArray =[] //Array of names
-
-    //Go through the Json Files
+    //Go through the JSON File
     $.getJSON( "playerShootingDistance.json", function( nba ) {
         jsonFile = nba;
-        //Find all unique names and Set it to the dropdown menu
+        //Find all unique names and add it to the set
         for(var i = 0; i < nba.length; i++) {
+            console.log(i);
             playerName = nba[i]['Player'];
-            if(set1.has(playerName) == false){ //If name is not in the set add it to the dropdown menu
+            if(setPlayerName.has(playerName) == false){ //If name is not in the set add it to the dropdown menu array
                 playerNameArray.push(playerName);
-                /*var option = document.createElement("option");
-                option.name = playerName;
-                option.text = playerName;
-                playersSelect.add(option);*/
             }
-            set1.add(playerName);
+            setPlayerName.add(playerName); //Ad it to the set
         }
-
         playerNameArray.sort()
+        //Adds all the unique name and ad it to the dropdown menu
         for(var i = 0 ; i < playerNameArray.length ; i++){
             var option = document.createElement("option");
             option.name = playerNameArray[i];
             option.text = playerNameArray[i];
             playersSelect.add(option);
-            console.log(playerNameArray[i]);
         }
-
-        playerNameArray.sort();
-        console.log(playerNameArray);
         //Set the years accordingly given the name
-        firstvalue = playersSelect.value;
-        updateSelectYear(firstvalue);
-        updateColumnChart(listDistanceMade,listDistanceAttempts)
+        updateSelectYear(playersSelect.value);
+        updateColumnChart(playersSelect.value,playersYearSelect.value)
     });
+    console.log("Set: " + setPlayerName.size);
 }
 
-function updateColumnChart(listMade,listAttempts){
-
-    var chart = new CanvasJS.Chart("chartContainer", {
-        animationEnabled: true,
-
-        title:{
-            text: playersSelect.value + ", " + yearSelect.value + " Regular Season Shooting Distance Attempts"
-        },
-        axisX:{
-            interval: 1
-        },
-        axisY2:{
-            interlacedColor: "rgba(1,77,101,.2)",
-            gridColor: "rgba(1,77,101,.1)",
-            title: "Shot Percentage"
-        },
-        data: [
-            {
-                type: "column",
-                name: "Made",
-                axisYType: "secondary",
-                color: "#0002ff",
-                showInLegend: true,
-                dataPoints: [
-                    {y: listMade[0], label: "Rim"},
-                    {y: listMade[1], label: "3 to 10ft"},
-                    {y: listMade[2], label: "10 to 16ft"},
-                    {y: listMade[3], label: "16 to 3pt Line"},
-                    {y: listMade[4], label: "3pt Line and beyond"}
-                ]
-            },
-            {
-                type: "column",
-                name: "Attempts",
-                axisYType: "secondary",
-                showInLegend: true,
-                color: "#cd0035",
-                dataPoints: [
-                    { y: listAttempts[0], label: "Rim" },
-                    { y: listAttempts[1], label: "3 to 10ft" },
-                    { y: listAttempts[2], label: "10 to 16ft" },
-                    { y: listAttempts[3], label: "16 to 3pt Line" },
-                    { y: listAttempts[4], label: "3pt Line and beyond" },
-                ]
-            },
-        ]
-    });
-    chart.render();
+function updateColumnChart(playerName,playerYear){
+    for(var i = 0; i < jsonFile.length; i++){
+        if(playerName == jsonFile[i]['Player'] && playerYear == jsonFile[i]["Year"]){
+            if(jsonFile[i]["Type"] == ["Attempts"]){
+                myChart.data.datasets[0].data[0] = parseInt(jsonFile[i]["At Rim"]);
+                console.log(parseInt(jsonFile[i]["At Rim"]));
+                myChart.data.datasets[0].data[1] = parseInt(jsonFile[i]["3 to <10 ft"]);
+                myChart.data.datasets[0].data[2] = parseInt(jsonFile[i]["10 to <16 ft"]);
+                myChart.data.datasets[0].data[3] = parseInt(jsonFile[i]["16ft to <3-pt"]);
+                myChart.data.datasets[0].data[4] = parseInt(jsonFile[i]["3-pt"]);
+                break;
+            }
+        }
+    }
+    myChart.update();
 }
 
 function updateSelectYear(name){
 
-    yearSelect.innerHTML = "";//Empty DropDown
-    var years =[]
+    playersYearSelect.innerHTML = "";//Empty DropDown
+    var years =[];
 
     //Get all the years given the name
     for(var i = 0; i < jsonFile.length; i++) {
@@ -116,16 +104,15 @@ function updateSelectYear(name){
     for(var i = 0; i < years.length; i++) { //Adds the years
          var option = document.createElement("option");
          option.text =years[i];
-         yearSelect.add(option);
+         playersYearSelect.add(option);
     }
 }
 
+function selectedYear(){
+    updateColumnChart(playersSelect.value,playersYearSelect.value);
+}
+
 function changeData() {
-    var test1 = [148,74,39,83,279]
-    var test2 = [240,280,50,100,301]
-
-    console.log(playersSelect.value);
     updateSelectYear(playersSelect.value);
-    updateColumnChart(test1,test2);
-
+    updateColumnChart(playersSelect.value,playersYearSelect.value);
 }

@@ -1,20 +1,7 @@
 <!DOCTYPE html>
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="index.js"></script>
-
-<style>
-
-    .chart div {
-        font: 10px sans-serif;
-        background-color: steelblue;
-        text-align: right;
-        padding: 3px;
-        margin: 1px;
-        color: white;
-    }
-
-</style>
 
 <html lang="en">
 <head>
@@ -22,14 +9,16 @@
     <title>NBA Players shooting range over the years</title>
 </head>
 <body>
+
 <p1>Player:</p1>
 <select id="playersName" onchange="changeData()">
 </select>
 <p1>Season:</p1>
-<select id="year" name="year" onchange="">
+<select id="year" name="year" onchange="selectedYear()">
 </select>
-<div id="chartContainer" style="height: 370px; width: 100%;"></div>
-
+<div class="chart-container" style="position: relative; height:20vh; width:70vw">
+    <canvas id="chart"></canvas>
+</div>
 
 </body>
 </html>
