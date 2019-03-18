@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+<script src="index.js"></script>
+
+<style>
+    pre {
+        font-family: 'Roboto', sans-serif;
+        font-size: 0.8em;
+        resize: both;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 0.5em;
+        resize: both;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+        resize: both;
+    }
+
+     #info {
+        margin: 0;
+        margin-left: 0em;
+         resize: both;
+    }
+
+    #fg {
+        margin: 0;
+        margin-left: 0em
+        resize: both;
+    }
+
+    .chart-container {
+        position: relative;
+        margin: left;
+        height: 40vh;
+        width: 50vw;
+    }
+</style>
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NBA Players shooting range over the years</title>
+</head>
+<body>
+
+<div id="info">
+<p1>Player:</p1>
+<select id="playersName" onchange="changeData()"></select>
+<p1>Season:</p1>
+<select id="year" name="year" onchange="selectedYear()"></select>
+
+<input type="radio" name="firstOption" value="league" checked="checked" onchange="updateColumnChart()"> League Avg.
+<p1>||</p1>
+<input type="radio" name="secondOption" value="Attempts" checked="checked"  onchange="updateColumnChart()"> Attempts
+<input type="radio" name="secondOption" value="Made" onchange="updateColumnChart()"> Made
+
+<table id = "fg">
+    <tr>
+        <th></th>
+        <th>At Rim</th>
+        <th>3ft to < 10ft</th>
+        <th>10ft to < 16ft</th>
+        <th>16ft to <3-pt</th>
+        <th>3-pt</th>
+    </tr>
+    <tr>
+        <td>League FG%</td>
+        <td id="lRim">50.0%</td>
+        <td id="l3ft">50.0%</td>
+        <td id="l10ft">50.0%</td>
+        <td id="l16ft">50.0%</td>
+        <td id="l3pt">50.0%</td>
+    </tr>
+    <tr>
+        <td id="playerName">Player FG%</td>
+        <td id="pRim">50.0%</td>
+        <td id="p3ft">50.0%</td>
+        <td id="p10ft">50.0%</td>
+        <td id="p16ft">50.0%</td>
+        <td id="p3pt">50.0%</td>
+    </tr>
+</table>
+</div>
+<div class="chart-container" >
+        <canvas id="chart" ></canvas>
+</div>
+
+
+</body>
+</html>
