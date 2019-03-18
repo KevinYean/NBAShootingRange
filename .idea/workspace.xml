@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="19fb033b-57ab-4708-bbd3-1e48fae90e79" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/playerShootingDistance.json" beforeDir="false" afterPath="$PROJECT_DIR$/playerShootingDistance.json" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -13,11 +14,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="663">
-              <caret line="39" column="21" lean-forward="true" selection-start-line="39" selection-start-column="21" selection-end-line="39" selection-end-column="21" />
+            <state relative-caret-position="629">
+              <caret line="49" column="45" selection-start-line="49" selection-start-column="45" selection-end-line="49" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/playerShootingDistance.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="382">
+              <caret line="2527" column="118" lean-forward="true" selection-start-line="2527" selection-start-column="118" selection-end-line="2528" selection-end-column="118" />
             </state>
           </provider>
         </entry>
@@ -70,11 +80,11 @@
       <list>
         <option value="$PROJECT_DIR$/Test.html" />
         <option value="$PROJECT_DIR$/test.json" />
-        <option value="$PROJECT_DIR$/playerShootingDistance.json" />
         <option value="$PROJECT_DIR$/leagueAverage.json" />
         <option value="$PROJECT_DIR$/nba.html" />
         <option value="$PROJECT_DIR$/index.js" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/playerShootingDistance.json" />
       </list>
     </option>
   </component>
@@ -150,12 +160,12 @@
       <workItem from="1552877551891" duration="8972000" />
       <workItem from="1552939512124" duration="8451000" />
       <workItem from="1552949860718" duration="96000" />
-      <workItem from="1552950197510" duration="320000" />
+      <workItem from="1552950197510" duration="1776000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58242000" />
+    <option name="totallyTimeSpent" value="59698000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -235,13 +245,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/playerShootingDistance.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="2043" column="120" selection-start-line="2043" selection-start-column="120" selection-end-line="2043" selection-end-column="120" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="93">
@@ -290,8 +293,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="39" column="21" lean-forward="true" selection-start-line="39" selection-start-column="21" selection-end-line="39" selection-end-column="21" />
+        <state relative-caret-position="629">
+          <caret line="49" column="45" selection-start-line="49" selection-start-column="45" selection-end-line="49" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/playerShootingDistance.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="2527" column="118" lean-forward="true" selection-start-line="2527" selection-start-column="118" selection-end-line="2528" selection-end-column="118" />
         </state>
       </provider>
     </entry>
