@@ -3,6 +3,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="index.js"></script>
 
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,16 +11,33 @@
 </head>
 <body>
 
+<p>Information:</p>
+<p>Line Graph (League Avg.):</p>
+<p>Line Graph (Player Avg.): </p>
+<p>Line Graph (Attempts): </p>
+<p>Line Graph (Made): </p>
+
+
+
 <p1>Player:</p1>
 <select id="playersName" onchange="changeData()">
 </select>
 <p1>Season:</p1>
 <select id="year" name="year" onchange="selectedYear()">
 </select>
-<P></P>
+
+<input type="radio" name="firstOption" value="league" checked="checked" onchange="updateColumnChart()"> League Avg.
+<input type="radio" name="firstOption" value="player" onchange="updateColumnChart()"> Player Avg.
+<p1>||</p1>
+<input type="radio" name="secondOption" value="Attempts" checked="checked"  onchange="updateColumnChart()"> Attempts
+<input type="radio" name="secondOption" value="Made" onchange="updateColumnChart()"> Made
+
+<br><br>
 <div class="chart-container" style="position: relative; height:20vh; width:70vw">
     <canvas id="chart"></canvas>
 </div>
+
+
 
 </body>
 </html>
